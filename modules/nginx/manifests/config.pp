@@ -1,4 +1,4 @@
-# Configuration files for Nginx Web Server
+# This class configures files and directories for Nginx Web Server
 
 class nginx::config() {
 
