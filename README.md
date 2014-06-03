@@ -1,5 +1,7 @@
 Requirements: VirtualBox + Vagrant + Git
 
+Tested on Ubuntu 12.04
+
 Install in three steps:
 
 ```
