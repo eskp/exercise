@@ -1,0 +1,14 @@
+user <%= @user %>;
+pid /var/run/nginx.pid;
+
+events {
+	worker_connections 1024;
+}
+
+http {
+
+	include /etc/nginx/conf.d/*.conf;
+
+    access_log <%= @access_log %>;
+    error_log <%= @error_log %>;
+}
