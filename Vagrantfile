@@ -17,6 +17,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "web", primary: true do |node|
     node.vm.host_name = "web.box"
     node.vm.network :private_network, ip: "10.0.0.10"
+    node.vm.provision "shell",
+      inline: "echo Site is now accessible at http://10.0.0.10:8000"
   end
 
   # View the documentation for the provider you're using for more
