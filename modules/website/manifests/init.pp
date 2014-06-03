@@ -1,6 +1,21 @@
 # == Class: website
 #
 # Base class to get website's files onto a server
+#
+# === Parameters
+#
+# [*basedir*]
+#   (string) Base directory where to build site vcsrepo
+#   Defaults to '/var/www/html' ($::website::basedir)
+#
+# [*git_source*]
+#   (string) Location of upsream site GIT repository
+#   Defaults to undef ($::website::git_source)
+#
+# [*manage_git*]
+#   (bool) If true, require the git package. If false do nothing.
+#   Defaults to false
+#
 
 class website(
   $basedir = '/var/www/html',
