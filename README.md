@@ -4,9 +4,7 @@ Install in three steps:
 
 ```
 $ git clone --recursive https://github.com/eskp/exercise.git
-
 $ cd exercise
-
 $ vagrant up
 ```
 
