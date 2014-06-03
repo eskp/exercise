@@ -1,4 +1,8 @@
-# This class configures files and directories for Nginx Web Server
+# == Class: nginx::config
+#
+# Configures files and directories for Nginx Web Server
+#
+#
 
 class nginx::config() {
 
