@@ -7,23 +7,23 @@
 #
 # [*docroot*]
 #   (string) Document root directory where to serve files from
-#   Defaults to '/var/www' ($::nginx::vhost::docroot)
+#   Required ($::nginx::vhost::docroot)
 #
 # [*port*]
-#   (int) Nginx virtual host port
-#   Defaults to 8000 ($::nginx::vhost::port)
+#   (string) Nginx virtual host port
+#   Defaults to '8000' ($::nginx::vhost::port)
 #
 # === Example
 #
-# nginx::vhost { 'my_site':
-#   docroot => '/srv/www',
-#   port    => 8080,
+# nginx::vhost { 'site.name.fqdn':
+#   docroot => '/path/to/docroot',
+#   port    => '8080',
 # }
 #
 
 define nginx::vhost(
-  $docroot='/var/www',
-  $port=8000,
+  $docroot,
+  $port='8000',
 ) {
 
   include nginx

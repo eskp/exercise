@@ -1,12 +1,13 @@
 # == Class: website
 #
-# Base class to get website's files onto a server
+# Base class installs websites to /var/www
+# from GIT repository
 #
 # === Parameters
 #
-# [*basedir*]
-#   (string) Base directory where to build site vcsrepo
-#   Defaults to '/var/www/html' ($::website::basedir)
+# [*site_name*]
+#   (string) Website's name, determines site's DocRoot
+#   Required ($::website::site_name)
 #
 # [*git_source*]
 #   (string) Location of upsream site GIT repository
@@ -18,26 +19,28 @@
 #
 
 class website(
-  $basedir = '/var/www/html',
+  $site_name,
   $git_source = undef,
   $manage_git = false,
 ) {
 
   include nginx
 
-  file { '/var/www':
+  $site_root = "/var/www/${site_name}"
+
+  file { ['/var/www', $site_root]:
     ensure => directory,
   }
 
   if $git_source {
-    vcsrepo { $basedir:
+    vcsrepo { $site_root:
       ensure   => present,
       provider => git,
       owner    => $nginx::user,
       source   => $git_source,
     }
   } else {
-    notify { 'git repo address not provided. Make sure to install site files yourself': }
+    notify { 'git repo site not provided. Make sure to install website files yourself': }
   }
 
   if $manage_git {
@@ -46,7 +49,7 @@ class website(
     }
   }
 
-  nginx::vhost { $::fqdn:
-    docroot => $basedir,
+  nginx::vhost { $site_name:
+    docroot => $site_root,
   }
 }
