@@ -1,5 +1,8 @@
-# Class to ensure Nginx daemon starts on boot
-# and keeps on running
+# == Class: nginx::service
+#
+# Ensures Nginx daemon starts on boot and keeps running
+#
+#
 
 class nginx::service() {
 
