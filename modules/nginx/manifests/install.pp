@@ -1,4 +1,11 @@
-# Class to install Nginx Web Server Package
+# == Class: nginx::install
+#
+# Installs Nginx web server package
+#
+# === Notes:
+#
+# Currently supported operating system is Ubuntu.
+#
 
 class nginx::install() {
 
